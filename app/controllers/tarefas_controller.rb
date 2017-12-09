@@ -4,7 +4,10 @@ class TarefasController < ApplicationController
   # GET /tarefas
   # GET /tarefas.json
   def index
-    @tarefas = Tarefa.all
+    respond_to do |format|
+      format.html
+      format.json { render json: TarefasDatatable.new(view_context) }
+    end
   end
 
   # GET /tarefas/1
